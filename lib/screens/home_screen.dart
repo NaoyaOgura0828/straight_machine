@@ -13,37 +13,49 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('ツッコミマシーン'),
         centerTitle: true,
       ),
-      body: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              _soundButton(),
-              _soundButton(),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              _soundButton(),
-              _soundButton(),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              _soundButton(),
-              _soundButton(),
-            ],
-          ),
-        ],
+      body: Container(
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(flex: 1, child: _soundButton()),
+                  Expanded(flex: 1, child: _soundButton()),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(flex: 1, child: _soundButton()),
+                  Expanded(flex: 1, child: _soundButton()),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Expanded(flex: 1, child: _soundButton()),
+                  Expanded(flex: 1, child: _soundButton()),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget _soundButton() {
-    return ElevatedButton(
-        onPressed: null,
-        child: Container()
-    );
+    return Container(
+        padding: EdgeInsets.all(8.0),
+        child: ElevatedButton(onPressed: null, child: Container()));
   }
-
-
 }
