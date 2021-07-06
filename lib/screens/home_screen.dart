@@ -13,7 +13,37 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('ツッコミマシーン'),
         centerTitle: true,
       ),
-      body: Container(),
+      body: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              _soundButton(),
+              _soundButton(),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              _soundButton(),
+              _soundButton(),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              _soundButton(),
+              _soundButton(),
+            ],
+          ),
+        ],
+      ),
     );
   }
+
+  Widget _soundButton() {
+    return ElevatedButton(
+        onPressed: null,
+        child: Container()
+    );
+  }
+
+
 }
