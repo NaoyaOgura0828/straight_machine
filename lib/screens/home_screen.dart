@@ -8,6 +8,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<String> _texts = [
+    /* サウンドボタンのTextリスト */
     'おめでとうございます',
     '合格です',
     'よくできました',
