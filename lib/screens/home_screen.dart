@@ -17,6 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   late Soundpool _soundpool;
+  // 本来ここでは初期化Soundpool _soundpool = Soundpool();とすべきだが
+  // 今回はinitState()メソッドを作成しているのでこの段階ではnullとするより他ない。よってlateを付与している。
+  // 詳しい解説はセクション6:105.を参照
 
   @override
   void initState() {
