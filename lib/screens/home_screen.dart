@@ -6,6 +6,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  List<String> _texts = ['おめでとうございます', '合格です', 'よくできました', '残念でした', '不合格です', '頑張りましょう'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Expanded(flex: 1, child: _soundButton()),
-                  Expanded(flex: 1, child: _soundButton()),
+                  Expanded(flex: 1, child: _soundButton(_texts[0])), // 'おめでとうございます'ボタン
+                  Expanded(flex: 1, child: _soundButton(_texts[1])), // '合格です'ボタン
                 ],
               ),
             ),
@@ -32,8 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Expanded(flex: 1, child: _soundButton()),
-                  Expanded(flex: 1, child: _soundButton()),
+                  Expanded(flex: 1, child: _soundButton(_texts[2])), // 'よくできました'ボタン
+                  Expanded(flex: 1, child: _soundButton(_texts[3])), // '残念でした'ボタン
                 ],
               ),
             ),
@@ -42,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Expanded(flex: 1, child: _soundButton()),
-                  Expanded(flex: 1, child: _soundButton()),
+                  Expanded(flex: 1, child: _soundButton(_texts[4])), // '不合格です'ボタン
+                  Expanded(flex: 1, child: _soundButton(_texts[5])), // '頑張りましょう'ボタン
                 ],
               ),
             ),
@@ -53,9 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _soundButton() {
+  Widget _soundButton(String displayText) { // ここの'String'は型を明示しているだけなので無くても動く
     return Container(
         padding: EdgeInsets.all(8.0),
-        child: ElevatedButton(onPressed: null, child: Container()));
+        child: ElevatedButton(onPressed: null,
+            child: Text(displayText),
+        ),
+    );
   }
 }
