@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _initSounds() async {
-    try{
+    try {
       _soundpool = Soundpool.fromOptions();
 
       /* サウンドリスト */
@@ -51,11 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
       print('initSounds終わり == 効果音ロード完了');
       setState(() {}); // ここでinitSoundsを画面に反映させる
-    } on IOException catch(error){
+    } on IOException catch (error) {
       /* 入手力エラーの際はエラー内容をprintする */
       print('エラーの内容は:$error');
     }
-
   }
 
   Future<int> loadSound(String soundPath) {
@@ -137,6 +136,11 @@ class _HomeScreenState extends State<HomeScreen> {
         style: ElevatedButton.styleFrom(
           primary: Colors.green, // ボタンカラーを'グリーン'に変更
           onPrimary: Colors.black, // ボタンテキストカラーを'ブラック'に変更
+          shape: RoundedRectangleBorder(
+            /* ボタン四隅のスタイル設定 */
+            borderRadius: BorderRadiusDirectional.all(
+                Radius.circular(20.0)), // 角丸を20.0に設定
+          ),
         ),
         onPressed: () => _playSound(soundId), // 音を鳴らす
         child: Text(displayText),
