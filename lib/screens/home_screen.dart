@@ -121,9 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       padding: EdgeInsets.all(8.0),
       child: ElevatedButton(
-        onPressed: null, //TODO: 音を鳴らす
+        onPressed: () => _playSound(soundId), // 音を鳴らす
         child: Text(displayText),
       ),
     );
+  }
+
+  void _playSound(int soundId) {
+    /* サウンドを再生する */
+    _soundpool.play(soundId);
+
   }
 }
