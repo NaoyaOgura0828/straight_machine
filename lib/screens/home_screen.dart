@@ -134,6 +134,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       padding: EdgeInsets.all(8.0),
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.green, // ボタンカラーを'グリーン'に変更
+          onPrimary: Colors.black, // ボタンテキストカラーを'ブラック'に変更
+        ),
         onPressed: () => _playSound(soundId), // 音を鳴らす
         child: Text(displayText),
       ),
