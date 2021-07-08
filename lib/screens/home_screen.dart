@@ -27,10 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
   // 詳しい解説はセクション6:105.を参照
 
   @override
-  void initState() async {
+  void initState() {
     /* Widget生成直後に1回だけ通るメソッド */
+    /* initStateは非同期処理出来ない */
     super.initState();
-    await _initSounds();
+    _initSounds();
+    print('initState終わり == buildメソッド回った');
   }
 
   Future<void> _initSounds() async {
@@ -43,6 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
     _soundIds[3] = await loadSound('assets/sounds/sound4.mp3');
     _soundIds[4] = await loadSound('assets/sounds/sound5.mp3');
     _soundIds[5] = await loadSound('assets/sounds/sound6.mp3');
+
+    print('initSounds終わり == 効果音ロード完了');
+    setState(() {}); // ここでinitSoundsを画面に反映させる
   }
 
   Future<int> loadSound(String soundPath) {
@@ -130,6 +135,5 @@ class _HomeScreenState extends State<HomeScreen> {
   void _playSound(int soundId) {
     /* サウンドを再生する */
     _soundpool.play(soundId);
-
   }
 }
