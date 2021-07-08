@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:soundpool/soundpool.dart';
@@ -36,18 +38,24 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _initSounds() async {
-    _soundpool = Soundpool.fromOptions();
+    try{
+      _soundpool = Soundpool.fromOptions();
 
-    /* サウンドリスト */
-    _soundIds[0] = await loadSound('assets/sounds/sound1.mp3');
-    _soundIds[1] = await loadSound('assets/sounds/sound2.mp3');
-    _soundIds[2] = await loadSound('assets/sounds/sound3.mp3');
-    _soundIds[3] = await loadSound('assets/sounds/sound4.mp3');
-    _soundIds[4] = await loadSound('assets/sounds/sound5.mp3');
-    _soundIds[5] = await loadSound('assets/sounds/sound6.mp3');
+      /* サウンドリスト */
+      _soundIds[0] = await loadSound('assets/sounds/sound1.mp3');
+      _soundIds[1] = await loadSound('assets/sounds/sound2.mp3');
+      _soundIds[2] = await loadSound('assets/sounds/sound3.mp3');
+      _soundIds[3] = await loadSound('assets/sounds/sound4.mp3');
+      _soundIds[4] = await loadSound('assets/sounds/sound5.mp3');
+      _soundIds[5] = await loadSound('assets/sounds/sound6.mp3');
 
-    print('initSounds終わり == 効果音ロード完了');
-    setState(() {}); // ここでinitSoundsを画面に反映させる
+      print('initSounds終わり == 効果音ロード完了');
+      setState(() {}); // ここでinitSoundsを画面に反映させる
+    } on IOException catch(error){
+      /* 入手力エラーの際はエラー内容をprintする */
+      print('エラーの内容は:$error');
+    }
+
   }
 
   Future<int> loadSound(String soundPath) {
